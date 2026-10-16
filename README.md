@@ -61,6 +61,10 @@ your-project/
 > *“用同一个后室素材，换个风格，帮我做一个快节奏轰炸的 SCP 异常调查档案解说！”*  
 > ➡️ **Agent 自主行为**：识别意图 $\rightarrow$ 切换挂载 `plugin_scp_archive.md` $\rightarrow$ 调度 `zh-CN-YunxiNeural` 极速激情科技男声 $\rightarrow$ 应用冷光高对比锐化滤镜 $\rightarrow$ 生成 `output_scp_archive.mp4`。
 
+> 💬 **指令示例 3（文件夹多素材智能混剪）**：  
+> *“帮我把素材文件夹 `F:\【视频】` 里的多个视频，混剪成一段快节奏的 SCP 档案短视频！”*  
+> ➡️ **Agent 自主行为**：识别输入为文件夹 $\rightarrow$ 扫描素材池 $\rightarrow$ 按插件设定的节奏（2.0秒/镜头）自动生成 8 个切片 $\rightarrow$ 标准化拼接并合成 `output_montage_scp.mp4`。
+
 ---
 
 ## 🎨 3分钟制作新插件：彻底消灭同质化

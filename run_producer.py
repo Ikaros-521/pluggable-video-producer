@@ -43,4 +43,14 @@ if __name__ == "__main__":
         "output/output_scp_archive.mp4"
     )
 
-    print("\n✅ 自测通过！skills/video-producer 技能准备就绪。")
+    # 3. 文件夹多素材混剪自测
+    print("\n🎬 测试素材文件夹多视频混剪...")
+    cmd_montage = [
+        sys.executable, RUNNER,
+        "--source", r"F:\【视频】",
+        "--plugin", "skills/video-producer/plugins/plugin_scp_archive.md",
+        "--output", "output/output_montage_scp.mp4"
+    ]
+    subprocess.run(cmd_montage, check=True)
+
+    print("\n✅ 全流程自测通过！skills/video-producer 支持单文件与文件夹混剪双模。")

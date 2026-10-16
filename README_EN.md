@@ -57,6 +57,10 @@ Interact with your AI Agent naturally:
 > *"Using the footage `F:\【视频】\《后室》预告片，深度解读.mp4`, make an eerie, slow-burn psychological horror short."*  
 > ➡️ **Agent Action**: Matches intent $\rightarrow$ Mounts `plugin_analog_horror.md` $\rightarrow$ Synthesizes `zh-CN-YunjianNeural` somber voice $\rightarrow$ Applies vintage VHS tint $\rightarrow$ Delivers `output_analog_horror.mp4`.
 
+> 💬 **Example Prompt (Multi-Video Montage)**:  
+> *"Take multiple clips from `F:\【视频】` and edit them into a rapid-fire SCP Archive montage!"*  
+> ➡️ **Agent Action**: Detects folder input $\rightarrow$ Pulls clips from asset pool at 2.0s/shot pace $\rightarrow$ Normalizes dimensions to 1080p and concatenates seamlessly $\rightarrow$ Delivers `output_montage_scp.mp4`.
+
 ---
 
 ## 🎨 Author a New Plugin in 3 Minutes

@@ -7,6 +7,7 @@ version: "1.0.0"
 voice_id: "zh-CN-YunxiNeural"
 rate: "+18%"
 clip_start: "50.0"
+shot_duration: "2.0"
 filter_preset: "cyber_scp"
 description: "主打极速语速轰炸、高对比锐化冷调与生存守则叙事"
 ---

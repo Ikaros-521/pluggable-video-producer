@@ -7,6 +7,7 @@ version: "1.0.0"
 voice_id: "zh-CN-YunjianNeural"
 rate: "-8%"
 clip_start: "15.0"
+shot_duration: "4.0"
 filter_preset: "analog_horror"
 description: "主打低语压迫感、旧显像管录像带噪点与黄绿色调"
 ---

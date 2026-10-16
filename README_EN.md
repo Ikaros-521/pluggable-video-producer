@@ -1,6 +1,6 @@
-# Pluggable Video Producer
+# Pluggable Video Producer Skill
 
-> 🎬 **Official End-to-End Production Reference Implementation for Pluggable Skills**: Automated generation of radically distinct short video styles using real multimedia pipelines (Edge-TTS + FFmpeg).
+> 🤖 **A Production-Ready AI Agent Skill**: Built on the Pluggable Skills specification, equipping your AI Agent (Antigravity / Claude Code / Cursor / Custom Agents) with automated, multi-styled, non-homogenized video creation and editing capabilities.
 
 [English](README_EN.md) | [中文](README.md)
 
@@ -8,46 +8,79 @@
 
 ---
 
-## 💡 Why This Repository?
+## 💡 Why a Skill, Not a Rigid Script?
 
-The primary specification repo [pluggable-skills](https://github.com/Ikaros-521/pluggable-skills) defines the **Spec v1.0 standard and the lightweight orchestration microkernel**.
+Traditional script tools require developers to fiddle with CLI flags and execute terminal commands manually.
 
-This repository serves as its **official production-grade reference implementation**, answering the fundamental question:
-> *"Can pluggable skills actually drive real-world, complex video production pipelines without output homogenization?"*
+As a true **Agent Skill**:
+1. **Natural Language Driven**: Simply talk to your Agent in natural language. The Agent autonomously understands intent, mounts the matching plugin, and orchestrates media tools in the background.
+2. **Zero-Homogenization Hot-Plugging**: Tired of cookie-cutter output? Just drop a single-file Markdown in `plugins/` (zero code). Your Agent immediately masters a new narrative voice, custom timbre, and visual color grading!
 
-The answer is **Yes**. In under 15 seconds, this pipeline renders two physically distinct, non-homogenized `.mp4` video files from the same source clip.
+```mermaid
+sequenceDiagram
+    actor User as Creator
+    participant Agent as AI Agent
+    participant Skill as video-producer (SKILL.md)
+    participant Plugin as Plugin Pool (Markdown)
+    participant Tool as Media Runner (TTS + FFmpeg)
+
+    User->>Agent: "Create a fast-paced SCP Archive video using my Backrooms footage"
+    Agent->>Skill: Activate video-producer skill
+    Skill->>Plugin: Load plugin_scp_archive.md
+    Skill->>Agent: Inject SCP narrative style & pacing directives
+    Agent->>Tool: Autonomously invoke background tool to render MP4
+    Tool-->>Agent: Output output_scp_archive.mp4
+    Agent-->>User: "Here is your SCP Archive video with high-octane voiceover and cold-contrast grading!"
+```
 
 ---
 
-## 🧪 Case Study: Two Opposing Styles from "The Backrooms"
+## 🛠️ How to Install & Use in Your Agent
 
-Using the same source video (*The Backrooms* trailer), we mount two single-file Markdown plugins:
+### 1. Install the Skill
+Copy the `skills/video-producer` directory into your Agent's workspace (e.g. `.agents/skills/`):
 
-| Dimension | Option A: Analog Horror (`plugin_analog_horror.md`) | Option B: SCP Archive Speedrun (`plugin_scp_archive.md`) |
-| :--- | :--- | :--- |
-| **Plugin File** | Plain Markdown (Zero code) | Plain Markdown (Zero code) |
-| **Voice Character** | `zh-CN-YunjianNeural` (Somber, deep whisper) | `zh-CN-YunxiNeural` (High-octane tech narrator) |
-| **Speech Rate** | `-8%` (Oppressive, slow pacing) | `+18%` (Rapid-fire informational speedrun) |
-| **Clip Cut** | 15.0s (Eerie, quiet yellow corridors) | 50.0s (Dynamic, sudden anomaly action) |
-| **Color Grading** | Vintage VHS tape, muted greenish-yellow tint | Cyberpunk cold contrast + unsharp edge boost |
-| **Output File** | `output/output_analog_horror.mp4` | `output/output_scp_archive.mp4` |
+```text
+your-project/
+└── .agents/
+    └── skills/
+        └── video-producer/      # Copy this folder
+            ├── SKILL.md         # Skill definition & SOP
+            ├── plugins/         # Style plugins
+            └── scripts/         # Background runner tools
+```
+
+### 2. Natural Language Activation in Chat
+Interact with your AI Agent naturally:
+
+> 💬 **Example Prompt (Psychological Horror)**:  
+> *"Using the footage `F:\【视频】\《后室》预告片，深度解读.mp4`, make an eerie, slow-burn psychological horror short."*  
+> ➡️ **Agent Action**: Matches intent $\rightarrow$ Mounts `plugin_analog_horror.md` $\rightarrow$ Synthesizes `zh-CN-YunjianNeural` somber voice $\rightarrow$ Applies vintage VHS tint $\rightarrow$ Delivers `output_analog_horror.mp4`.
 
 ---
 
-## 🚀 Quickstart
+## 🎨 Author a New Plugin in 3 Minutes
 
-### 1. Requirements
-Ensure `ffmpeg` and `edge-tts` are available:
-```bash
-pip install edge-tts
+Creators don't need to write Python code. Simply create a `.md` file in `skills/video-producer/plugins/`:
+
+```markdown
+---
+slot: "video_style"
+id: "cyber-punk"
+name: "Cyberpunk Neon"
+version: "1.0.0"
+voice_id: "zh-CN-YunxiNeural"
+rate: "+10%"
+clip_start: "30.0"
+filter_preset: "cyber_scp"
+description: "Futuristic neon-soaked sci-fi breakdown"
+---
+
+## 旁白剧本
+Night falls, and neon tubes cast red reflection warnings across the wet pavement...
 ```
 
-### 2. Run the Production Pipeline
-```bash
-python run_producer.py
-```
-
-The script will synthesize real human voices and assemble physical `.mp4` videos into `output/` in ~15 seconds.
+Tell your Agent: *"Cut the video in Cyberpunk style"*, and it executes immediately!
 
 ---
 
@@ -55,18 +88,18 @@ The script will synthesize real human voices and assemble physical `.mp4` videos
 
 ```text
 pluggable-video-producer/
-├── README.md                  # Chinese documentation
-├── README_EN.md               # English documentation (this file)
-├── LICENSE                    # MIT License
-├── run_producer.py            # Main automated pipeline script
-├── core/
-│   ├── engine.py              # Plugin parser and slot orchestrator
-│   ├── tts_runner.py          # Edge-TTS voice synthesis runner
-│   └── ffmpeg_runner.py       # FFmpeg video cut & color grading runner
-├── plugins/                   # Single-file Markdown style plugins
-│   ├── plugin_analog_horror.md# Analog Horror psychological plugin
-│   └── plugin_scp_archive.md  # SCP Archive speedrun plugin
-└── output/                    # Real generated physical MP4 videos
+├── README.md                      # Chinese documentation
+├── README_EN.md                   # English documentation (this file)
+├── LICENSE                        # MIT License
+├── skills/
+│   └── video-producer/            # 🌟 Core Agent Skill
+│       ├── SKILL.md               # Agent execution SOP & directives
+│       ├── plugins/               # 🌟 Pluggable Markdown style plugins
+│       │   ├── plugin_analog_horror.md
+│       │   └── plugin_scp_archive.md
+│       └── scripts/               # Background tools called by Agent
+│           └── producer_runner.py # FFmpeg & TTS runner
+└── output/                        # Physical MP4 outputs generated by Agent
     ├── output_analog_horror.mp4
     └── output_scp_archive.mp4
 ```
